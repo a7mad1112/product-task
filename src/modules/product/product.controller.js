@@ -17,3 +17,12 @@ export const getAll = async (req, res) => {
     return res.json({ msg: 'Error, Cannot Retrieve Products', err });
   }
 };
+
+export const deleteProduct = async ({ params }, res) => {
+  try {
+    const product = await productModel.findByIdAndDelete(params.id);
+    return res.json({ msg: 'success', product });
+  } catch (err) {
+    return res.json({ msg: 'Error, Cannot Delete Product', err });
+  }
+};
